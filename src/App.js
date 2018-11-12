@@ -3,6 +3,7 @@ import "../src/style/style.css";
 
 class App extends Component {
   state = {
+    search: '',
     members: [
       {
         id: "0",
@@ -30,10 +31,25 @@ class App extends Component {
       }
     ]
   };
+
+updateSearch = (e) => {
+  this.setState({search: e.target.value.substr(0, 20)})
+}
   render() {
+    let filteredContacts = this.state.members.filter( contact =>{
+      return contact.name.indexOf(this.state.search) !==-1
+    }
+      
+    )
     return (
       <div className="App">
-        {this.state.members.map(elem => {
+      <input 
+      onChange={this.updateSearch.bind(this)} 
+      className='search' 
+      type='text' 
+      value={this.state.search}
+      placeholder='Enter name'></input>
+        {filteredContacts.map(elem => {
           return (
             <div className="contact">
               <div key={elem.id}>

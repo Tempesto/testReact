@@ -10,3 +10,8 @@ body .App .contact {
   border: 1px solid #000;
   margin: 20px;
 }
+body .App .search {
+  max-width: 200px;
+  border: 1px solid #000;
+  margin: 20px 0 0 20px;
+}
