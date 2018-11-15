@@ -1,36 +1,44 @@
 import React, { Component } from "react";
 import "../src/style/style.css";
+import PhoneBook from "./components/PhoneBook";
+
 
 class App extends Component {
   state = {
     search: '',
-    members: [
-      {
-        id: "0",
-        telefon: "+380991",
-        name: "Ross",
-        company: "Ross Company",
-        email: "ross@mail.com",
-        foto: "fotoRoss"
-      },
-      {
-        id: "1",
-        telefon: "+380992",
-        name: "Terry",
-        company: "Terry Company",
-        email: "terry@mail.com",
-        foto: "fotoTerry"
-      },
-      {
-        id: "2",
-        telefon: "+380993",
-        name: "Abby",
-        company: "Abby Company",
-        email: "abby@mail.com",
-        foto: "fotoAbby"
-      }
+     members: [
+    //   {
+    //     id: "0",
+    //     telefon: "+380991",
+    //     name: "Ross",
+    //     company: "Ross Company",
+    //     email: "ross@mail.com",
+    //     foto: "fotoRoss"
+    //   },
+    //   {
+    //     id: "1",
+    //     telefon: "+380992",
+    //     name: "Terry",
+    //     company: "Terry Company",
+    //     email: "terry@mail.com",
+    //     foto: "fotoTerry"
+    //   },
+    //   {
+    //     id: "2",
+    //     telefon: "+380993",
+    //     name: "Abby",
+    //     company: "Abby Company",
+    //     email: "abby@mail.com",
+    //     foto: "fotoAbby"
+    //   }
     ]
   };
+
+componentDidMount(){
+  PhoneBook().then(json=>{
+    this.setState({members:json});
+  });
+}
 
 updateSearch = (e) => {
   this.setState({search: e.target.value.substr(0, 20)})
